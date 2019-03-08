@@ -9,4 +9,10 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+
+    <!-- 数据操作 -->
+    <import resource="spring-druid.xml"/>
+    <!-- 导入shiro -->
+    <import resource="spring-shiro.xml"/>
+
 </beans>
