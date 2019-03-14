@@ -8,7 +8,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="sys_role_permission")
-public class SysRolePermission implements Serializable {
+public class RolePermission implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,7 +21,7 @@ public class SysRolePermission implements Serializable {
 	@Column(name="role_id")
 	private int roleId;
 
-	public SysRolePermission() {
+	public RolePermission() {
 	}
 
 	public int getId() {

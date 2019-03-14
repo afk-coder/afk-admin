@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="sys_permission")
-public class SysPermission implements Serializable {
+public class Permission implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,7 +33,7 @@ public class SysPermission implements Serializable {
 
 	private String code;
 
-	public SysPermission() {
+	public Permission() {
 	}
 
 	public Integer getId() {

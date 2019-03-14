@@ -1,11 +1,11 @@
 package net.fux.auth.shiro;
 
-import net.fux.auth.entity.SysPermission;
-import net.fux.auth.entity.SysRole;
-import net.fux.auth.entity.SysUser;
-import net.fux.auth.service.SysPermissionService;
-import net.fux.auth.service.SysRoleService;
-import net.fux.auth.service.SysUserService;
+import net.fux.auth.entity.Permission;
+import net.fux.auth.entity.Role;
+import net.fux.auth.entity.User;
+import net.fux.auth.service.PermissionService;
+import net.fux.auth.service.RoleService;
+import net.fux.auth.service.UserService;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
@@ -30,13 +30,13 @@ public class CustomRealm extends AuthorizingRealm {
     public static final String SESSION_USER_KEY = "FUX";
 
     @Autowired
-    private SysUserService sysUserService;
+    private UserService userService;
 
     @Autowired
-    private SysRoleService sysRoleService;
+    private RoleService roleService;
 
     @Autowired
-    private SysPermissionService sysPermissionService;
+    private PermissionService permissionService;
 
     /**
      * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用,负责在应用程序中决定用户的访问控制的方法
@@ -51,15 +51,15 @@ public class CustomRealm extends AuthorizingRealm {
         List<String> roleList = new ArrayList<>();
         List<String> permissionList = new ArrayList<>();
         // 从数据库中获取当前登录用户的详细信息
-        SysUser user = sysUserService.getUser(username);
+        User user = userService.getUser(username);
         if (null != user) {
             //获取用户角色
-            List<SysRole> roles = sysRoleService.getListByUserId(user.getId());
-            for (SysRole role : roles) {
+            List<Role> roles = roleService.getListByUserId(user.getId());
+            for (Role role : roles) {
                 roleList.add(role.getRoleName());
                 //获取角色权限
-                List<SysPermission> permissions = sysPermissionService.getListByRoleId(role.getId());
-                for (SysPermission permission : permissions) {
+                List<Permission> permissions = permissionService.getListByRoleId(role.getId());
+                for (Permission permission : permissions) {
                     permissionList.add(permission.getCode());
                 }
             }
@@ -86,7 +86,7 @@ public class CustomRealm extends AuthorizingRealm {
         // 实际上这个authcToken是从AdminController里面currentUser.login(token)传过来的
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         System.err.println("验证当前Subject时获取到token为" + ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));
-        SysUser user = sysUserService.getUser(token.getUsername());
+        User user = userService.getUser(token.getUsername());
         if(null != user) {
             AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getName(), user.getPassword().toCharArray(), user.getId().toString());
             this.setSession(CustomRealm.SESSION_USER_KEY, user);

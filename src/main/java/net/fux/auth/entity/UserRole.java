@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="sys_user_role")
-public class SysUserRole implements Serializable {
+public class UserRole implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -22,7 +22,7 @@ public class SysUserRole implements Serializable {
 	@Column(name="user_id")
 	private int userId;
 
-	public SysUserRole() {
+	public UserRole() {
 	}
 
 	public int getId() {

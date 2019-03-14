@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="sys_user")
-public class SysUser implements Serializable {
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -20,7 +20,7 @@ public class SysUser implements Serializable {
 
 	private String password;
 
-	public SysUser() {
+	public User() {
 	}
 
 	public Integer getId() {

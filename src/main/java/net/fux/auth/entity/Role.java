@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="sys_role")
-public class SysRole implements Serializable {
+public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -19,7 +19,7 @@ public class SysRole implements Serializable {
 	@Column(name="role_name")
 	private String roleName;
 
-	public SysRole() {
+	public Role() {
 	}
 
 	public Integer getId() {

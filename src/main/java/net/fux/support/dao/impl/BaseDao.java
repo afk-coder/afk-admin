@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fuxj on 2019/3/8
@@ -20,6 +22,10 @@ import java.util.List;
 @Repository("baseDao")
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
 public class BaseDao implements IBaseDao {
+
+    @Autowired
+    @Qualifier("jdbcTemplate")
+    private JdbcTemplate jdbcTemplate;
 
     @Resource
     @Qualifier("sessionFactory")
@@ -52,6 +58,16 @@ public class BaseDao implements IBaseDao {
     @Override
     public <T> List<T> findBySql(String sql, Class<T> entityClass, Object... params) {
         return findList(sql, entityClass, params);
+    }
+
+    @Override
+    public List<Map<String, Object>> queryForList(String sql, Object... params) {
+        return jdbcTemplate.queryForList(sql, params);
+    }
+
+    @Override
+    public <T> T queryForObject(String sql, Class<T> entityClass, Object... params) {
+        return jdbcTemplate.queryForObject(sql, entityClass, params);
     }
 
     private <T> List<T> findList(String sql, Class<T> entityClass, Object... params) {
