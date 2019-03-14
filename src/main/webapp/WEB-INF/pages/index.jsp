@@ -61,7 +61,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="${ctx}/" data-index="0">权限管理</a>
+                            <a class="J_menuItem" href="${ctx}/auth/permission/list" data-index="0">权限管理</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="index_v2.html">主页示例二</a>
