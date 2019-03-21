@@ -19,7 +19,7 @@ public class IndexServiceImpl implements IndexService {
 
     @Override
     public List<Map<String, Object>> findPermissionByUserId(Integer userId) {
-        String sql = "select * from sys_role";
+        String sql = "select * from sys_permission where is_menu = 1 ";
         return baseService.queryForList(sql);
     }
 }

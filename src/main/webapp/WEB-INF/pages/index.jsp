@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -19,10 +20,10 @@
     <![endif]-->
 
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="${ctx}/public/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="${ctx}/public/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="${ctx}/public/css/animate.css" rel="stylesheet">
-    <link href="${ctx}/public/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="${ctx}/public/support/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="${ctx}/public/support/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="${ctx}/public/support/css/animate.css" rel="stylesheet">
+    <link href="${ctx}/public/support/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -34,11 +35,11 @@
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
-                    <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="${ctx}/public/img/profile_small.jpg"/></span>
+                    <div class="dropdown profile-element" style="text-align: center;">
+                        <span><img alt="image" class="img-circle" src="${ctx}/public/support/img/profile_small.jpg"/></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
-                                <span class="block m-t-xs"><strong class="font-bold">${FUX.name}</strong></span>
+                                <span class="block m-t-xs"><strong class="font-bold"><shiro:principal /></strong></span>
                                 <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
                             </span>
                         </a>
@@ -51,33 +52,28 @@
                             <li><a href="${ctx}/logout">安全退出</a></li>
                         </ul>
                     </div>
-                    <div class="logo-element">H+</div>
+                    <div class="logo-element">afk</div>
                 </li>
+                <c:forEach items="${list}" var="p" >
                 <li>
+                    <c:if test="${empty p.parent_id}">
                     <a href="#">
                         <i class="fa fa-home"></i>
-                        <span class="nav-label">用户管理</span>
+                        <span class="nav-label">${p.name}</span>
                         <span class="fa arrow"></span>
                     </a>
+                    </c:if>
+                    <c:forEach items="${list}" var="ps" >
                     <ul class="nav nav-second-level">
+                        <c:if test="${p.id eq ps.parent_id}">
                         <li>
-                            <a class="J_menuItem" href="${ctx}/auth/permission/list" data-index="0">权限管理</a>
+                            <a class="J_menuItem" href="${ctx}${ps.url}" data-index="0">${ps.name}</a>
                         </li>
-                        <li>
-                            <a class="J_menuItem" href="index_v2.html">主页示例二</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="index_v3.html">主页示例三</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="index_v4.html">主页示例四</a>
-                        </li>
-                        <li>
-                            <a href="index_v5.html" target="_blank">主页示例五</a>
-                        </li>
+                        </c:if>
                     </ul>
-
+                    </c:forEach>
                 </li>
+                </c:forEach>
             </ul>
         </div>
     </nav>
@@ -96,85 +92,6 @@
                     </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li class="m-t-xs">
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a7.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right">46小时前</small>
-                                        <strong>小四</strong> 这个在日本投降书上签字的军官，建国后一定是个不小的干部吧？
-                                        <br>
-                                        <small class="text-muted">3天前 2014.11.8</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a4.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                        <small class="pull-right text-navy">25小时前</small>
-                                        <strong>国民岳父</strong> 如何看待“男子不满自己爱犬被称为狗，刺伤路人”？——这人比犬还凶
-                                        <br>
-                                        <small class="text-muted">昨天</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a class="J_menuItem" href="mailbox.html">
-                                        <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-alerts">
-                            <li>
-                                <a href="mailbox.html">
-                                    <div>
-                                        <i class="fa fa-envelope fa-fw"></i> 您有16条未读消息
-                                        <span class="pull-right text-muted small">4分钟前</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="profile.html">
-                                    <div>
-                                        <i class="fa fa-qq fa-fw"></i> 3条新回复
-                                        <span class="pull-right text-muted small">12分钟钱</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a class="J_menuItem" href="notifications.html">
-                                        <strong>查看所有 </strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="hidden-xs">
-                        <a href="index_v1.html" class="J_menuItem" data-index="0"><i class="fa fa-cart-arrow-down"></i>
-                            购买</a>
-                    </li>
                     <li class="dropdown hidden-xs">
                         <a class="right-sidebar-toggle" aria-expanded="false">
                             <i class="fa fa-tasks"></i> 主题
@@ -636,18 +553,18 @@
 </div>
 
 <!-- 全局js -->
-<script src="${ctx}/public/js/jquery.min.js?v=2.1.4"></script>
-<script src="${ctx}/public/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="${ctx}/public/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="${ctx}/public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="${ctx}/public/js/plugins/layer/layer.min.js"></script>
+<script src="${ctx}/public/support/js/jquery.min.js?v=2.1.4"></script>
+<script src="${ctx}/public/support/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="${ctx}/public/support/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="${ctx}/public/support/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="${ctx}/public/support/js/plugins/layer/layer.min.js"></script>
 
 <!-- 自定义js -->
-<script src="${ctx}/public/js/hplus.js?v=4.1.0"></script>
-<script type="text/javascript" src="${ctx}/public/js/contabs.js"></script>
+<script src="${ctx}/public/support/js/hplus.js?v=4.1.0"></script>
+<script type="text/javascript" src="${ctx}/public/support/js/contabs.js"></script>
 
 <!-- 第三方插件 -->
-<script src="${ctx}/public/js/plugins/pace/pace.min.js"></script>
+<script src="${ctx}/public/support/js/plugins/pace/pace.min.js"></script>
 
 </body>
 

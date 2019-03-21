@@ -15,17 +15,17 @@
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
     <%--<link rel="shortcut icon" href="favicon.ico">--%>
-    <link href="${ctx}/public/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="${ctx}/public/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="${ctx}/public/support/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="${ctx}/public/support/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
     <!-- Morris -->
-    <link href="${ctx}/public/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="${ctx}/public/support/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
 
     <!-- Gritter -->
-    <link href="${ctx}/public/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="${ctx}/public/support/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
 
-    <link href="${ctx}/public/css/animate.css" rel="stylesheet">
-    <link href="${ctx}/public/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="${ctx}/public/support/css/animate.css" rel="stylesheet">
+    <link href="${ctx}/public/support/css/style.css?v=4.1.0" rel="stylesheet">
 
 </head>
 
@@ -326,39 +326,39 @@
 </div>
 
 <!-- 全局js -->
-<script src="${ctx}/public/js/jquery.min.js?v=2.1.4"></script>
-<script src="${ctx}/public/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="${ctx}/public/support/js/jquery.min.js?v=2.1.4"></script>
+<script src="${ctx}/public/support/js/bootstrap.min.js?v=3.3.6"></script>
 
 
 <!-- Flot -->
-<script src="${ctx}/public/js/plugins/flot/jquery.flot.js"></script>
-<script src="${ctx}/public/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="${ctx}/public/js/plugins/flot/jquery.flot.spline.js"></script>
-<script src="${ctx}/public/js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="${ctx}/public/js/plugins/flot/jquery.flot.pie.js"></script>
+<script src="${ctx}/public/support/js/plugins/flot/jquery.flot.js"></script>
+<script src="${ctx}/public/support/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="${ctx}/public/support/js/plugins/flot/jquery.flot.spline.js"></script>
+<script src="${ctx}/public/support/js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="${ctx}/public/support/js/plugins/flot/jquery.flot.pie.js"></script>
 
 <!-- Peity -->
-<script src="${ctx}/public/js/plugins/peity/jquery.peity.min.js"></script>
-<script src="${ctx}/public/js/demo/peity-demo.js"></script>
+<script src="${ctx}/public/support/js/plugins/peity/jquery.peity.min.js"></script>
+<script src="${ctx}/public/support/js/demo/peity-demo.js"></script>
 
 <!-- 自定义js -->
-<script src="${ctx}/public/js/content.js?v=1.0.0"></script>
+<script src="${ctx}/public/support/js/content.js?v=1.0.0"></script>
 
 
 <!-- jQuery UI -->
-<script src="${ctx}/public/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="${ctx}/public/support/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
 <!-- GITTER -->
-<script src="${ctx}/public/js/plugins/gritter/jquery.gritter.min.js"></script>
+<script src="${ctx}/public/support/js/plugins/gritter/jquery.gritter.min.js"></script>
 
 <!-- EayPIE -->
-<script src="${ctx}/public/js/plugins/easypiechart/jquery.easypiechart.js"></script>
+<script src="${ctx}/public/support/js/plugins/easypiechart/jquery.easypiechart.js"></script>
 
 <!-- Sparkline -->
-<script src="${ctx}/public/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="${ctx}/public/support/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
 <!-- Sparkline demo data  -->
-<script src="${ctx}/public/js/demo/sparkline-demo.js"></script>
+<script src="${ctx}/public/support/js/demo/sparkline-demo.js"></script>
 
 <script>
     $(document).ready(function () {

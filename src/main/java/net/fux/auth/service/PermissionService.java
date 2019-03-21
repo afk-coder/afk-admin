@@ -1,6 +1,10 @@
 package net.fux.auth.service;
 
 import net.fux.auth.entity.Permission;
+import net.fux.support.vo.BootstrapTable;
+import net.fux.support.vo.JsTreeJson;
+import net.fux.support.vo.ResultVo;
+import net.fux.support.vo.SearchVo;
 
 import java.util.List;
 
@@ -10,4 +14,12 @@ import java.util.List;
 public interface PermissionService {
 
     List<Permission> getListByRoleId(Integer roleId);
+
+    List<JsTreeJson> list();
+
+    Permission getById(Integer id);
+
+    ResultVo saveOrUpdate(Permission permission);
+
+    ResultVo delete(Integer id);
 }

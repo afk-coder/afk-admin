@@ -30,7 +30,6 @@ public class IndexController {
         if (!subject.isAuthenticated()) {
             return "redirect:/login";
         }
-        //获取用户菜单
         User user = (User) subject.getSession().getAttribute(CustomRealm.SESSION_USER_KEY);
         List<Map<String, Object>> list = indexService.findPermissionByUserId(user.getId());
         model.addAttribute("list", list);
