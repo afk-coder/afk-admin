@@ -7,57 +7,57 @@ import java.util.Map;
  */
 public class SearchVo {
 
-    private int offset = 0;
+    private int page = 1;
 
-    private int limit = 10;
+    private int rows = 20;
 
-    private Direct order;
+    private String filed;
 
-    private String sort;
+    private Direct direct;
 
-    private Map<String, Object> params;
+    public Map<String, String> args;
 
     public enum Direct {
         asc, desc
     }
 
-    public int getOffset() {
-        return offset;
+    public int getPage() {
+        return page;
     }
 
-    public void setOffset(int offset) {
-        this.offset = offset;
+    public void setPage(int page) {
+        this.page = page;
     }
 
-    public int getLimit() {
-        return limit;
+    public int getRows() {
+        return rows;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public void setRows(int rows) {
+        this.rows = rows;
     }
 
-    public Direct getOrder() {
-        return order;
+    public String getFiled() {
+        return filed;
     }
 
-    public void setOrder(Direct order) {
-        this.order = order;
+    public void setFiled(String filed) {
+        this.filed = filed;
     }
 
-    public String getSort() {
-        return sort;
+    public Direct getDirect() {
+        return direct;
     }
 
-    public void setSort(String sort) {
-        this.sort = sort;
+    public void setDirect(Direct direct) {
+        this.direct = direct;
     }
 
-    public Map<String, Object> getParams() {
-        return params;
+    public Map<String, String> getArgs() {
+        return args;
     }
 
-    public void setParams(Map<String, Object> params) {
-        this.params = params;
+    public void setArgs(Map<String, String> args) {
+        this.args = args;
     }
 }

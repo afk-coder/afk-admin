@@ -17,7 +17,7 @@ public interface PermissionService {
 
     List<JsTreeJson> list();
 
-    Permission getById(Integer id);
+    Permission getPermissionById(Integer id);
 
     ResultVo saveOrUpdate(Permission permission);
 

@@ -1,5 +1,6 @@
 package net.fux.support.service.impl;
 
+import net.fux.support.core.Page;
 import net.fux.support.dao.IBaseDao;
 import net.fux.support.service.IBaseService;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,11 @@ public class BaseService implements IBaseService {
     @Override
     public <T> T queryForObject(String sql, Class<T> entityClass, Object... params) {
         return baseDao.queryForObject(sql, entityClass, params);
+    }
+
+    @Override
+    public <T extends Page> T paginationSQL(String sql, Object[] params, int page, int rows, Class<T> requirePageType) {
+        return baseDao.paginationSQL(sql, params, page, rows, requirePageType);
     }
 
     @Override

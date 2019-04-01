@@ -2,6 +2,7 @@ package net.fux.auth.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -18,7 +19,21 @@ public class User implements Serializable {
 
 	private String name;
 
+	@Column(name = "real_name")
+	private String realName;
+
 	private String password;
+
+	private String phone;
+
+	@Column(name = "create_time")
+	private Date createTime;
+
+	@Column(name = "update_time")
+	private Date updateTime;
+
+	@Column(name = "is_enabled")
+	private String isEnabled;
 
 	public User() {
 	}
@@ -47,4 +62,43 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getIsEnabled() {
+		return isEnabled;
+	}
+
+	public void setIsEnabled(String isEnabled) {
+		this.isEnabled = isEnabled;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 }

@@ -21,25 +21,20 @@
         window.top.location = window.location;
     }</script>
 </head>
-<body class="gray-bg" onload="DocForm.SignatureControl.ShowSignature('ER789');" onunload="DocForm.SignatureControl.DeleteSignature();">
+<body class="gray-bg">
 <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
         <div>
-            <h1 class="logo-name">H+</h1>
+            <h1 class="logo-name">M</h1>
         </div>
-        <h3>欢迎使用 H+</h3>
+        <h3>欢迎使用后台管理系统</h3>
         <form class="m-t" role="form" action="${ctx}/login" method="post" id="DocForm">
-            <OBJECT id="SignatureControl"
-                    classid="clsid:D85C89BE-263C-472D-9B6B-5264CD85B36E"
-                    codebase="iHTMLSignature.cab#version=5.0.2.6"
-                    width=0
-                    height=0
-                    hspace=0
-                    vspace=0
-            >
-                <param name="ServiceUrl" value="http://218.85.65.43:8089">
+            <OBJECT id="SignatureControl"  classid="clsid:D85C89BE-263C-472D-9B6B-5264CD85B36E" codebase="iSignatureHTML.cab#version=7,0,0,0" width=0 height=0 VIEWASTEXT>
+                <param name="ServiceUrl" value="http://218.85.65.43:28000/yzweb/PublicWeb/service.aspx"><!--读去数据库相关信息-->
+                <param name="WebAutoSign" value="0">             <!--是否自动数字签名(0:不启用，1:启用)-->
+                <param name="PrintControlType" value=2>               <!--打印控制方式（0:不控制  1：签章服务器控制  2：开发商控制）-->
+                <!--param name="Weburl"  value=" http://192.168.0.2:8080/iSignatureServer/OfficeServer.jsp">        <签章服务器响应-->
             </OBJECT>
-
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="用户名" required="" name="username">
             </div>
@@ -56,6 +51,7 @@
                 ${msg}
             </p>
             <input type=button value=" 盖章 " onclick="DoSignature();">
+            <div id="signView"></div>
         </form>
     </div>
 </div>
@@ -63,16 +59,12 @@
 <script src="${ctx}/public/support/js/jquery.min.js?v=2.1.4"></script>
 <script src="${ctx}/public/support/js/bootstrap.min.js?v=3.3.6"></script>
 <script type="text/javascript">
-    // SignatureControl.Position(260,180);
-    // SignatureControl.RunHandWrite();
-    // SignatureControl.RunSignature(true);
-    // console.log(SignatureControl.WebGetKeySN());
-    // console.log(SignatureControl.GetSignatureInfo());
 
     function DoSignature() {
-        DocForm.SignatureControl.FieldsList="XYBH=协议编号;BMJH=协议编号;JF=甲方签章;YF=乙方签章;HZNR=合作内容;QLZR=权利责任;CPMC=产品名称;DGSL=订购数量;DGRQ=订购日期";
-        DocForm.SignatureControl.Position(260,180);
-        DocForm.SignatureControl.RunSignature(true);
+        DocForm.SignatureControl.FieldsList="XYBH=协议编号;BMJH=保密级别;JF=甲方签章;HZNR=合作内容;QLZR=权利责任;CPMC=产品名称;DGSL=订购数量;DGRQ=订购日期"       //所保护字段
+        DocForm.SignatureControl.Position(460,260);                      //签章位置，屏幕坐标
+        DocForm.SignatureControl.UserName="lyj";                         //文件版签章用户
+        DocForm.SignatureControl.RunSignature();                         //执行签章操作
     }
 </script>
 </body>

@@ -29,11 +29,11 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public List<JsTreeJson> list() {
-        return getPermission("");
+        return findPermission("");
     }
 
     @Override
-    public Permission getById(Integer id) {
+    public Permission getPermissionById(Integer id) {
         return baseService.getBySql("select * from sys_permission where id = ? ", Permission.class, id);
     }
 
@@ -60,7 +60,7 @@ public class PermissionServiceImpl implements PermissionService {
         }
     }
 
-    private List<JsTreeJson> getPermission(String id) {
+    private List<JsTreeJson> findPermission(String id) {
         StringBuilder sql = new StringBuilder();
         sql.append("select * from sys_permission where 1 = 1 ");
         List<Object> params = new ArrayList<>();
@@ -77,7 +77,7 @@ public class PermissionServiceImpl implements PermissionService {
             JsTreeJson treeJson = new JsTreeJson();
             treeJson.setId(permission.getId().toString());
             treeJson.setText(permission.getName());
-            treeJson.setChildren(getPermission(permission.getId().toString()));
+            treeJson.setChildren(findPermission(permission.getId().toString()));
             childres.add(treeJson);
         }
         return childres;

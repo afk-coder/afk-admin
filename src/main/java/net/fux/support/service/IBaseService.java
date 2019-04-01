@@ -1,5 +1,7 @@
 package net.fux.support.service;
 
+import net.fux.support.core.Page;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -17,6 +19,8 @@ public interface IBaseService {
     List<Map<String, Object>> queryForList(String sql, Object... params);
 
     <T> T queryForObject(String sql, Class<T> entityClass, Object... params);
+
+    <T extends Page> T paginationSQL(String sql, Object[] params, int page, int rows, Class<T> requirePageType);
 
     Integer executeSQL(String sql, Object[] params);
 

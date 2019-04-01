@@ -71,13 +71,25 @@
             } else {
                 parentId = '';
             }
-            layerId = layer_open('功能管理新增', '${ctx}/auth/permission/add?parentId='+parentId, '600px', '700px');
+            layerId = layer.open({
+                title: '功能管理新增',
+                maxmin: false,
+                type: 2,
+                content: '${ctx}/auth/permission/add?parentId='+parentId,
+                area: ['600px', '700px']
+            });
         });
 
         $('#update').click(function () {
             if(isSelect()) {
                 var nodes = $('#jstree').jstree(true).get_selected(false);
-                layerId = layer_open('功能管理修改', '${ctx}/auth/permission/add?update='+nodes[0], '600px', '700px');
+                layerId = layer.open({
+                    title: '功能管理修改',
+                    maxmin: false,
+                    type: 2,
+                    content: '${ctx}/auth/permission/update?id='+nodes[0],
+                    area: ['600px', '700px']
+                });
             }
         });
 
@@ -127,8 +139,6 @@
 
     function layerClose() {
         layer.close(layerId);
-        //刷新树形
-        $('#jstree').jstree(true).refresh();
     }
 </script>
 
